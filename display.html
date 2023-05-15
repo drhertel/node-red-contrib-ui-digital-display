@@ -24,7 +24,8 @@
 			digits: { value: 5, validate: digits => ( +digits || 0 ) >= 1 && ( +digits || 0 ) <= 10 },
 			decimals: { value: 1, validate: function( decimals ) {
 				return ( +decimals || 0 ) >= 0 && ( +decimals || 0 ) < ( +$( '#node-input-digits' ).val() || +this.digits );
-			} }
+			} },
+			padding: { value: ' ' },
 		},
 		label: function() {
 			return this.name || 'digital display';
@@ -66,6 +67,11 @@
 		<input type="number" id="node-input-decimals" min="0" max="9" style="width: 35%;" />
 	</div>
 	<br />
+	<div class="form-row">
+		<label for="node-input-padding">Padding</label>
+		<input type="text" id="node-input-padding" style="width: 30px;" placeholder=' '/>
+	</div>
+	<br />
 	<div class="form-tips" style="text-align: justify;">
 		The <b>Size</b> parameter determines the size the widget will take on the dashboard. By
 		adding additional <b>Digits</b>, even if they are not needed to display the value at all,
@@ -93,5 +99,10 @@
 	<p style="text-align: justify;">
 		<b>Decimals</b> can be used to determine the number of decimal places. This value must be
 		smaller than <b>Digits</b>.
+	</p>
+	<p style="text-align: justify;">
+		<b>Padding</b> can be used to fill all digits left of the current value with a padding char.
+		Most useful if you want to pad ...4 to 0004, using padding char '0'. (Note: this will not
+		work for negative numbers as they would be displayed as 00-4)
 	</p>
 </script>
